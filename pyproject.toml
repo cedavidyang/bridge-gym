@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bridge-gym"
+version = "0.1.0"
+description = "gymnasium-based RL env for bridge management"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "jaxtyping",
+    "gymnasium",
+    "torchrl"
+]
+
+# automatically finds the 'bridge_gym' folder inside the repo
+[tool.setuptools.packages.find]
+where = ["."]
