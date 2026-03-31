@@ -29,7 +29,7 @@ NCS, NA = 4, 5
 # Failure probabilities
 CS_PFS = stats.norm.cdf([-4.2, -3.5, -3.0, -2.5])  
 cost_base = 10
-FAILURE_COST = cost_base**7
+FAILURE_COST = cost_base**5
 
 # Action 0 — Do nothing
 action0 = np.array([
@@ -47,27 +47,29 @@ action1 = np.array([
     [0, 0.03, 0.95, 0.02],
     [0, 0, 0, 1]
 ])
-unit_price1 = np.array([cost_base**2]*4)
+unit_price1 = np.array([cost_base**1]*NCS)
 
 # Action 2 — Repair
 action2 = np.array([
-    [0.99, 0.01, 0, 0],
+    # [0.99, 0.01, 0, 0],
+    [1.0, 0, 0, 0],
     [0.25, 0.725, 0.025, 0],
     [0, 0.5, 0.45, 0.05],
     [0, 0, 0.5, 0.5]
 ])
-unit_price2 = np.array([cost_base**3, cost_base**3,
-                        cost_base**4, cost_base**4])
+unit_price2 = np.array([cost_base**2, cost_base**2,
+                        cost_base**2, cost_base**2])
 
 # Action 3 — Rehabilitation
 action3 = np.array([
-    [0.99, 0.01, 0, 0],
+    # [0.99, 0.01, 0, 0],
+    [1.0, 0, 0, 0],
     [0.5, 0.5, 0, 0],
     [0.4, 0.5, 0.1, 0],
     [0.4, 0.5, 0.1, 0]
 ])
-unit_price3 = np.array([cost_base**4, cost_base**4,
-                        cost_base**5, cost_base**5])
+unit_price3 = np.array([cost_base**3, cost_base**3,
+                        cost_base**3, cost_base**3])
 
 # Action 4 — Replacement
 action4 = np.array([
@@ -76,7 +78,7 @@ action4 = np.array([
     [1.0, 0, 0, 0],
     [1.0, 0, 0, 0]
 ])
-unit_price4 = np.array([cost_base**7]*NCS)  # drop CS5
+unit_price4 = np.array([2*cost_base**3]*NCS)  # drop CS5
 
 # Pack into final arrays
 ACTION_MODEL = np.array([action0, action1, action2, action3, action4])
